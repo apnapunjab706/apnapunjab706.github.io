@@ -103,3 +103,7 @@ footer {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.logo-img {
+  width: 120px;
+  margin-bottom: 15px;
+}
