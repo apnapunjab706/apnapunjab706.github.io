@@ -103,9 +103,17 @@ footer {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.logo-img {
-  width: 70px;      /* 👈 size control */
-  height: 70px;
-  object-fit: contain;
-  margin-bottom: 10px;
+.main-logo {
+  max-width: 280px;   /* 👈 MAIN CONTROL */
+  width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+/* Mobile ke liye aur chhota */
+@media (max-width: 600px) {
+  .main-logo {
+    max-width: 220px;
+  }
 }
