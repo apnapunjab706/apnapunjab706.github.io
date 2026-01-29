@@ -117,18 +117,18 @@ footer {
     max-width: 220px;
   }
 }
-.login-box {
+.team-login {
   max-width: 300px;
   margin: 50px auto;
   text-align: center;
 }
-.login-box input {
+.team-login input {
   display: block;
   width: 90%;
   padding: 10px;
   margin: 10px auto;
 }
-.login-box button {
+.team-login button {
   padding: 10px 20px;
   background: green;
   color: white;
