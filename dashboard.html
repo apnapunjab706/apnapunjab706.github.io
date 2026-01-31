@@ -84,6 +84,11 @@
     alert("Server IP Copied!");
   }
 
+  // Flashy welcome fade out
+setTimeout(() => {
+  document.querySelector('.full-screen-message').style.display = 'none';
+}, 3000);
+
   // Live Minecraft server status
   function loadServerStatus() {
   fetch("https://api.mcsrvstat.us/2/apnapunjab.fun")
