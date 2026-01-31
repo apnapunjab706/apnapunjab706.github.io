@@ -76,3 +76,41 @@ animate();
 setTimeout(() => {
   document.querySelector('.full-screen-message').style.display = 'none';
 }, 3000);
+
+// Live Minecraft server status + players
+fetch("https://api.mcsrvstat.us/2/apnapunjab.fun")
+  .then(res => res.json())
+  .then(data => {
+    const status = document.getElementById("server-status");
+    const players = document.getElementById("players");
+    const playerList = document.getElementById("player-list");
+
+    if (data.online) {
+      status.innerHTML = "🟢 Server is ONLINE";
+      players.innerHTML = `👥 Players Online: ${data.players.online} / ${data.players.max}`;
+
+      // Clear previous list
+      playerList.innerHTML = "";
+
+      // List players if available
+      if (data.players.list) {
+        data.players.list.forEach(name => {
+          const li = document.createElement("li");
+          li.innerText = name;
+          playerList.appendChild(li);
+        });
+      } else {
+        playerList.innerHTML = "<li>No players online</li>";
+      }
+
+    } else {
+      status.innerHTML = "🔴 Server is OFFLINE";
+      players.innerHTML = "";
+      playerList.innerHTML = "";
+    }
+  })
+  .catch(() => {
+    document.getElementById("server-status").innerText = "⚠️ Status unavailable";
+    document.getElementById("players").innerText = "";
+    document.getElementById("player-list").innerHTML = "";
+  });
