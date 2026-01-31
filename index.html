@@ -62,6 +62,14 @@
 </footer>
 
 <script>
+  
+// ===== Copy Server IP =====
+function copyIP() {
+  navigator.clipboard.writeText("apnapunjab.fun");
+  alert("Server IP Copied!");
+}
+  
+// ===== Live Server Status =====
 const status = document.getElementById("server-status");
 const players = document.getElementById("players");
 
@@ -80,6 +88,7 @@ fetch("https://api.mcsrvstat.us/2/apnapunjab.fun")
     status.innerText = "⚠️ Status unavailable";
     players.innerText = "";
   });
+  
 </script>
   
 <script src="script.js"></script>
