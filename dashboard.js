@@ -85,3 +85,4 @@ function loadAnnouncements() {
 function logout() {
   auth.signOut().then(() => location.href = "team-login.html");
 }
+console.log("USER:", user.uid);
