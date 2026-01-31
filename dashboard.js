@@ -87,3 +87,14 @@ function logout() {
 }
 console.log("USER:", user.uid);
 alert("JS LOADED");
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+      }
+auth.onAuthStateChanged(user => {
+  alert(user ? "LOGGED IN" : "NOT LOGGED IN");
+});
