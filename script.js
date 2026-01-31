@@ -71,3 +71,8 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+// Flashy welcome fade out
+setTimeout(() => {
+  document.querySelector('.full-screen-message').style.display = 'none';
+}, 3000);
