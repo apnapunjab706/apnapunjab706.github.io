@@ -1,4 +1,4 @@
-name: Deploy Website
+name: Deploy Team Login
 
 on:
   push:
@@ -12,14 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Create .env with secret
+      - name: Create .env with API_KEY
         run: echo "API_KEY=${{ secrets.API_KEY }}" > .env
 
-      - name: Build Project
+      - name: Build / Deploy
         run: |
-          # Example if you have npm
-          npm install
-          npm run build
-
-      - name: Deploy
-        run: echo "Deploy commands here"
+          # agar tu static HTML use kar raha hai:
+          echo "Deploy commands here"
