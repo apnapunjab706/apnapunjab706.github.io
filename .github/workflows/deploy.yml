@@ -1,0 +1,25 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create .env with secret
+        run: echo "API_KEY=${{ secrets.API_KEY }}" > .env
+
+      - name: Build Project
+        run: |
+          # Example if you have npm
+          npm install
+          npm run build
+
+      - name: Deploy
+        run: echo "Deploy commands here"
