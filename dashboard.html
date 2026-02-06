@@ -93,7 +93,7 @@ setTimeout(() => {
 
   // Live Minecraft server status
   function loadServerStatus() {
-  fetch("https://api.mcsrvstat.us/2/apnapunjab.fun:25565")
+  fetch("https://api.mcstatus.io/v2/status/java/apnapunjab.fun")
     .then(res => res.json())
     .then(data => {
       const status = document.getElementById("server-status");
