@@ -93,24 +93,42 @@ function copyIP() {
 }
   
 // ===== Live Server Status =====
-const status = document.getElementById("server-status");
-const players = document.getElementById("players");
+// ===== Server List =====
+const servers = [
+  {name: "Lobby", ip: "apnapunjab.fun:25566", statusId: "lobby-status", playersId: "lobby-players"},
+  {name: "Survival", ip: "apnapunjab.fun:25569", statusId: "survival-status", playersId: "survival-players"},
+  {name: "Bedwars", ip: "apnapunjab.fun:25567", statusId: "bedwars-status", playersId: "bedwars-players"},
+  {name: "Lifesteel", ip: "apnapunjab.fun:25568", statusId: "lifesteel-status", playersId: "lifesteel-players"},
+];
 
-fetch("https://api.mcsrvstat.us/2/157.15.98.66:25565")
-  .then(res => res.json())
-  .then(data => {
-    if (data.online) {
-      status.innerHTML = "🟢 Server is ONLINE";
-      players.innerHTML = `👥 Players: ${data.players.online} / ${data.players.max}`;
-    } else {
-      status.innerHTML = "🔴 Server is OFFLINE";
-      players.innerHTML = "";
-    }
-  })
-  .catch(() => {
-    status.innerText = "⚠️ Status unavailable";
-    players.innerText = "";
-  });
+function fetchServerStatus(server) {
+  fetch(`https://api.mcsrvstat.us/2/${server.ip}`)
+    .then(res => res.json())
+    .then(data => {
+      const statusEl = document.getElementById(server.statusId);
+      const playersEl = document.getElementById(server.playersId);
+
+      if(data.online){
+        statusEl.innerHTML = "🟢 ONLINE";
+        playersEl.innerHTML = `👥 ${data.players.online} / ${data.players.max} players`;
+      } else {
+        statusEl.innerHTML = "🔴 OFFLINE";
+        playersEl.innerHTML = "";
+      }
+    })
+    .catch(() => {
+      document.getElementById(server.statusId).innerText = "⚠️ Status unavailable";
+      document.getElementById(server.playersId).innerText = "";
+    });
+}
+
+// ===== Load All Servers =====
+servers.forEach(server => fetchServerStatus(server));
+
+// ===== Auto-refresh every 15 sec =====
+setInterval(() => {
+  servers.forEach(server => fetchServerStatus(server));
+}, 15000);
   
 </script>
   
